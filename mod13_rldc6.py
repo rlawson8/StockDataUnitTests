@@ -16,7 +16,8 @@ class StockTest(unittest.TestCase):
         self.goodTimeSeriesThree = 3
         self.goodTimeSeriesFour = 4
         self.badTimeSeries = 5
-        self.badDate = "20212101-12121"
+        self.badStartDate = "20212101-12121"
+        self.badEndDate = "12345-1333-1111111111"
 
 
     def test_symbol(self):
@@ -37,8 +38,11 @@ class StockTest(unittest.TestCase):
         self.assertTrue(StockDataVisualizer.validateTimeSeries(self.goodTimeSeriesFour))
         self.assertFalse(StockDataVisualizer.validateTimeSeries(self.badTimeSeries))
 
-    def test_Date(self):
-        self.assertRaises(Exception, StockDataVisualizer.validateDate, self.badDate)
+    def test_StartDate(self):
+        self.assertRaises(Exception, StockDataVisualizer.validateDate, self.badStartDate)
+        
+    def test_EndDate(self):
+        self.assertRaises(Exception, StockDataVisualizer.validateDate, self.badEndDate)
 
 if __name__ == '__main__':
     unittest.main()
